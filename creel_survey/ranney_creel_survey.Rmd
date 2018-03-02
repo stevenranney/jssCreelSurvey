@@ -11,8 +11,8 @@ author:
 title:
   # If you use tex in the formatted title, also supply version without
   # For running headers, if needed
-  formatted: "\\pkg{AnglerCreelSurveySimulation}: Playing with Pretend Anglers and Fish"
-  plain:     "AnglerCreelSurveySimulation: Playing with Pretend Anglers and Fish"
+  formatted: "Simulating fisheries creel surveys wtih \\pkg{AnglerCreelSurveySimulation} in \\proglang{R}"
+  plain:     "Simulating fisheries creel surveys with AnglerCreelSurveySimulation in R"
   short:     "\\pkg{AnglerCreelSurveySimulation}: Simulating Creel Surveys"
 abstract: >
   The abstract of the article.
@@ -26,13 +26,18 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r echo = FALSE}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 
 library(knitcitations)
+
 options("citation_format" = "pandoc")
 bib <- read.bibtex("documentation.bib")
-devtools::install_github("stevenranney/AnglerCreelSurveySimulation")
+
+install.packages("AnglerCreelSurveySimulation", repos='http://cran.us.r-project.org')
 library(AnglerCreelSurveySimulation)
+
+set.seed(239)
+
 
 ```
 
@@ -66,17 +71,18 @@ In access-type surveys, creel surveyors are located at angler access points, int
 
 In large fisheries with multiple access points, multiple surveyors may be deployed to several different locations. As additional surveyors are added to the survey, however, labor costs increase. Bus-route creel surveys [@RobsonAndJones1989] allow surveyors to travel along a predetermined route of access points, arriving at an access point on schedule, waiting for a predetermined amount of time, then moving on to the next point. While at each site, the surveyor measures angler effort (i.e., recording the amount of time that an angling party's car is located at the site) and interviews departing anglers, collecting data on party size and catch, and collecting additional biological data, if necessary. "Catch" is defined as fish harvested and caught-and-released. Robson and Jones [-@RobsonAndJones1989] and Jones and Robson [-@JonesAndRobson] detail the statistical theory behind bus route creel surveys.
 
-Fisheries managers often inherit creel survey designs and continue to implement those designs with little thought. The \\prolang{R} package \\pkg{AnglerCreelSurveySimulation} [@Ranney2018] is designed to help fisheries managers explore their survey design options. The \\pkg{AnglerCreelSurveySimulation} package provides fisheries managers the opportunity to use *a priori* data in their simulations, tailoring the inputs to their fishery.
+Fisheries managers often inherit creel survey designs and continue to implement those designs with little thought. The \proglang{R} package \pkg{AnglerCreelSurveySimulation} [@Ranney2018] is designed to help fisheries managers explore their survey design options. The \pkg{AnglerCreelSurveySimulation} package provides fisheries managers the opportunity to use *a priori* data in their simulations, tailoring the inputs to their fishery.
 
 # Simulating a survey
 
-In all cases, creel surveys collect data on anglers, their effort, and their catch. To simulate angler effort and catch, the \\pkg{AnglerCreelSurveySimulation} package uses four functions to create the angler population (`make_anglers()`), calculate the surveyor observed effort and catch and the total effort and catch (`get_total_values()`), simulate the actual survey (`simulate_bus_route()`, and conduct a survey of infinte temporal length (`conduct_multiple_surveys()`. While all functions are accessible through the package, the user only need be familiar with `conduct_multiple_surveys()`. However, it helps to understand the rest of the functions to understand how the package---and simulations---are generated.
+In all cases, creel surveys collect data on anglers, their effort, and their catch. To simulate angler effort and catch, the \\pkg{AnglerCreelSurveySimulation} package uses four functions to create the angler population (`make_anglers()`), calculate the surveyor observed effort and catch and the total effort and catch (`get_total_values()`), simulate the actual survey (`simulate_bus_route()`, and conduct a survey of infinte temporal length (`conduct_multiple_surveys()`. While all functions are accessible through the package, the user only need be familiar with `conduct_multiple_surveys()`. However, it helps to understand the rest of the functions to understand how the simulations are generated.
 
 The angler population is simulated with `make_anglers()`:
 
 ```{r}
 
-anglers <- make_anglers(n_anglers = 100, mean_trip_length = 3.88, fishing_day_length = 12)
+anglers <- make_anglers(n_anglers = 100, mean_trip_length = 3.88, 
+                        fishing_day_length = 12)
 
 head(anglers)
 
@@ -84,7 +90,7 @@ head(anglers)
 
 The number of anglers visiting a site is `"n_anglers"`. The `"mean_trip_length"` argument is mean trip length of an angling party, calculated from *a priori* data. The defaults are calculated from data from the Lake Roosevelt Fisheries Evaluation Program [@STOI]. `"fishing_day_length"` is the length, in hours, of the day available to anglers. The default value for `"fishing_day_length"` is the length of a mid-summer's sunrise-to-sunset hours. (Many authorities limit fishing hours from one-half hour before sunrise to one-half hour after sunset.)
 
-`make_anglers()`returns a dataframe that is `"nagnlers"` long with the variables `start_time`, `departureTime`, and `tripLength`. These values are the start time of the angler at the fishery, the departure time of the angler from the fishery, and the total time spent on the fishery, respectively. `start_time` for an individual angler is randomly generated for each angler from the uniform distribution and is limited to the length of the fishing day minus `0.25` hours. `tripLength` is randomly generated from the $\gamma$ distribution with `shape = mean_trip_length`. `tripLength` is the difference between `departureTime` and `start_time`.
+`make_anglers()`returns a dataframe that is `"nanglers"` long with the variables `start_time`, `departureTime`, and `tripLength`. These values are the start time of the angler at the fishery, the departure time of the angler from the fishery, and the total time spent on the fishery, respectively. `start_time` for an individual angler is randomly generated for each angler from the uniform distribution and is limited to the length of the fishing day minus `0.25` hours. `tripLength` is randomly generated from the $\gamma$ distribution with `shape = mean_trip_length`. `tripLength` is the difference between `departureTime` and `start_time`.
 
 Once the angler population has been created, the `get_total_values()` function can be used to calculate observed and total values. `get_total_values()` uses the output from `make_anglers()` and requires information about the start, end, and wait times of the surveyor, along with the sampling probability ($\pi$ in the equations above), and the mean catch rate of the fishery. A number of defaults are included in the function but to customize the creel survey, users can specify survey times. For example, for one surveyor staying at a single access point for an 8-hour day:
 
@@ -127,8 +133,9 @@ where $h_i$ is the harvest and $e_i$ is the effort of the $i^{th}$ sampling unit
 Like `simulate_bus_route()` is a wrapper function for `make_anglers()` and `get_total_values()`, `conduct_multiple_surveys()` is a wrapper for all three. With `conduct_multiple_surveys()`, users can simulate `"n_sims"` number of surveys. For example, if a user were intersted in simulating a months' worth of weekday creel surveys (`4` weeks * `5` weekdays = `20`):
 ```{r}
 
-surveys <- conduct_multiple_surveys(n_sims = 20, start_time = 2, wait_time = 8, n_anglers = 100, 
-                                  n_sites = 1, sampling_prob = 8/12, mean_catch_rate = 2.5)
+surveys <- conduct_multiple_surveys(n_sims = 20, start_time = 2, wait_time = 8, 
+                                    n_anglers = 100, n_sites = 1, 
+                                    sampling_prob = 8/12, mean_catch_rate = 2.5)
 
 head(surveys)
 

@@ -1,0 +1,90 @@
+\begin{thebibliography}{12}
+\newcommand{\enquote}[1]{``#1''}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem[{Anderson and Neumann(1996)}]{AndersonAndNeumann}
+Anderson RO, Neumann RM (1996).
+\newblock \enquote{Length, weight, and associated structural indices.}
+\newblock In BR~Murphy, DW~Willis (eds.), \emph{Fisheries Techniques, 2nd
+  edition}, pp. 447--482. American Fisheries Society.
+
+\bibitem[{Jones and Pollock(2012)}]{JonesAndPollock2012}
+Jones CM, Pollock KH (2012).
+\newblock \enquote{Recreational survey methods: estimation of effort, harvest,
+  and released catch.}
+\newblock In AV~Zale, DL~Parrish, TM~Sutton (eds.), \emph{Fisheries Techniques,
+  3rd edition}, pp. 883--919. American Fisheries Society.
+
+\bibitem[{Jones and Robson(1991)}]{JonesAndRobson}
+Jones CM, Robson DS (1991).
+\newblock \enquote{Improving Precision in Angler Surveys: Traditional Access
+  Design versus Bus Route Design.}
+\newblock In CS~Guy, ML~Brown (eds.), \emph{American Fisheries Society
+  Symposium 12}, pp. 177--188. American Fisheries Society.
+
+\bibitem[{LRFEP(2008)}]{STOI}
+LRFEP (2008).
+\newblock \emph{Lake Roosevelt Fisheries Evaluation Program Creel Data}.
+\newblock Sopkane Tribe of Indians.
+
+\bibitem[{Lyle \emph{et~al.}(2002)Lyle, Coleman, West, Campbell, and
+  Henry}]{Lyleetal}
+Lyle JM, Coleman APM, West L, Campbell D, Henry GW (2002).
+\newblock \enquote{New large-scale survey methods for evaluating sport
+  fisheries.}
+\newblock In TJ~Pitcher, CE~Hollingsworth (eds.), \emph{Recreational fisheries:
+  ecological, economic, and social evaluation}, pp. 207--226. Blackwell
+  Scientific Publications, Fish and Aquatic Resources Series 8.
+
+\bibitem[{Malvestuto(1996)}]{Malvestuto1996}
+Malvestuto SP (1996).
+\newblock \enquote{Sampling the recreational creel.}
+\newblock In BR~Murphy, DW~Willis (eds.), \emph{Fisheries Techniques, 2nd
+  edition}, pp. 591--623. American Fisheries Society.
+
+\bibitem[{Miranda and Bettoli(2007)}]{MirandaAndBettoli}
+Miranda LE, Bettoli PW (2007).
+\newblock \enquote{Mortality.}
+\newblock In CS~Guy, ML~Brown (eds.), \emph{Analysis and Interpretation of
+  Freshwater Fisheries Data}, pp. 229--277. American Fisheries Society.
+
+\bibitem[{Pollock(2003)}]{Pollock2003}
+Pollock KH (2003).
+\newblock \enquote{Recreational angler surveys: the interaction of scale and
+  optimal contact methods for effort and catch estimation.}
+\newblock In APM Coleman (ed.), \emph{Proceedings of the third world
+  recreational fisheries conference}, pp. 33--38. Department of Business,
+  Industry and Resource Development.
+
+\bibitem[{Pollock \emph{et~al.}(1994)Pollock, Jones, and
+  Brown}]{Pollocketal1994}
+Pollock KH, Jones CM, Brown TL (1994).
+\newblock \emph{Angler survey methods and their applications in fisheries
+  management}.
+\newblock American Fisheries Society, Special Publication 25.
+
+\bibitem[{Ranney(2018)}]{Ranney2018}
+Ranney S (2018).
+\newblock \emph{AnglerCreelSurveySimulation}.
+\newblock R package version 1.0.0,
+  \urlprefix\url{http://CRAN.R-project.org/package=AnglerCreelSurveySimulation}.
+
+\bibitem[{Robson and Jones(1989)}]{RobsonAndJones1989}
+Robson DS, Jones CM (1989).
+\newblock \enquote{The Theoretical Basis of an Access Site Angler Survey
+  Design.}
+\newblock \emph{Biometrics}, \textbf{45}, 83--89.
+
+\bibitem[{Thompson(2002)}]{Thompson2002}
+Thompson SK (2002).
+\newblock \emph{Samplingt}.
+\newblock 2nd edition edition. Wiley.
+
+\end{thebibliography}
