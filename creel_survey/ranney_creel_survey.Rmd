@@ -33,7 +33,6 @@ library(knitcitations)
 options("citation_format" = "pandoc")
 bib <- read.bibtex("documentation.bib")
 
-install.packages("AnglerCreelSurveySimulation", repos='http://cran.us.r-project.org')
 library(AnglerCreelSurveySimulation)
 
 set.seed(239)

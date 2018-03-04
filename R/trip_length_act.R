@@ -13,5 +13,5 @@ trip_length_act <-
 
 trip_length_act %>%
 ggplot(aes(x = length)) +
-  geom_histogram()
+ geom_histogram()
 
