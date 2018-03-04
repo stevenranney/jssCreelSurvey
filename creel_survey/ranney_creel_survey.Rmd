@@ -113,13 +113,15 @@ The return from `simulate_bus_route()` contains the estimates and the actual val
 
 In this example, $\widehat{E}$ is calculated by the bus route estimator [@JonesAndRobson]
 
+{% raw %}
 $$\widehat{E} = T\sum_{i}{\frac{1}{w_{i}}}\sum_{j}{X_{ij}}$$
+{% endraw %}
 
 where $\widehat{E}$ is the total party hours of fishing effort, $T$ is the total time required for the surveyor to complete the route (including wait times and travel times), $w_i$ is the waiting time at the $i^{th}$ site (where $i = 1, ... n$ sites), $e_{ij}$ is the total time that the $j^{th}$ car is parked at the $i^{th}$ site while the agent is at that site (where $j = 1, ... n$ sites), and $X_{ij}$ is the amount of time that an angling party's car ($j$) is present during the surveyor's wait at site $i$. The bus route estimator equation was developed to estimate fishing where anglers' cars would be seen parked at fishing access sites but the probability of encountering an angler and obtaining a completed-trip interview was low [@JonesAndRobson]. The bus route estimator estimates total angling party count rather than total angler count. To convert party-hours to angler-hours, an estimate of the number of anglers per party must be obtained from interviews [@JonesAndRobson].
 
 The ratio of means catch rate (i.e., `"catch_rate_ROM"`) is estimated from:
 
-$$\widehat{R} = \frac{{\sum_{i=1}^n}{h_i}}{{\sum_{i=1}^n}{e_i}}}}$$
+$$\widehat{R} = \frac{{\sum_{i=1}^n}{h_i}}{{\sum_{i=1}^n}{e_i}}$$
 
 where $h_i$ is the harvest and $e_i$ is the effort of the $i^{th}$ sampling unit in a sample size of $n$ [@Malvestuto1996].
 
