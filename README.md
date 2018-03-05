@@ -1,1 +1,4 @@
-# jssCreelSurvey
+
+The `R` package [`AnglerCreelSurveySimulation`](https://cran.r-project.org/package=AnglerCreelSurveySimulation) gives the manager of a fishery the means by which to simulate a creel survey to determine which survey is best for their fishery. Though fairly simple and with few functions needed to make that determination, the package is still detailed enough "behind the scenes" to need some additional documentation. There is a vignette embedded in the package that is reasonable enough and should give users enough information to set up one or more simulations.
+
+The paper in this repository will eventually be submitted to the [Journal of Statistical Software](https://www.jstatsoft.org/index) in order to publicize the package.
